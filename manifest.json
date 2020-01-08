@@ -23,6 +23,7 @@
       ]
     }
   },
+  "start_url": "/index.html/?source=pwa",
   "display": "standalone",
   "offline_enabled": true,
   "permissions": [
