@@ -11,7 +11,7 @@ const CACHE_VERSION = 3;
 const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
-const filesToCache = [
+const OFFLINE_URL = [
   '/',
   '/icons/512..png',
   '/jspm_packages/system.js',
