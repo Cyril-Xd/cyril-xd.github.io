@@ -1,4 +1,4 @@
-
+'use strict';
 /**
  * Cyril-xd offline service worker
  *
