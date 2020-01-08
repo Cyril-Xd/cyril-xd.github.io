@@ -12,7 +12,7 @@ const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
 const OFFLINE_URL = [
-  '/',
+  './',
   '/icons/512..png',
   '/jspm_packages/system.js',
   '/jspm_packages/system.src.js',
