@@ -11,7 +11,7 @@ const CACHE_VERSION = 1;
 const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
-const OFFLINE_URL = '/offline.html';
+const OFFLINE_URL = '/index.html';
 
 function createCacheBustedRequest(url) {
   const request = new Request(url, { cache: 'reload' });
