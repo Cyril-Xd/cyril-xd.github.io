@@ -57,7 +57,7 @@ const OFFLINE_URL = [
 
 const staticCacheName = 'pages-cache-v1';
 
-window.addEventListener('beforeinstallprompt', e => {
+self.addEventListener('beforeinstallprompt', e => {
   console.log('beforeinstallprompt Event fired');
   e.preventDefault();
   // Stash the event so it can be triggered later.
