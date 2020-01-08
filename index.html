@@ -57,5 +57,12 @@
         <script src="config.js"></script>
         <script src="build.js"></script>
         <script>System.import('./index.coffee!')</script>
+        <script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
+</script>
     </body>
 </html>
