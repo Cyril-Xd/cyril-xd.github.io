@@ -13,14 +13,6 @@ const CURRENT_CACHES = {
 };
 const OFFLINE_URL = './index.html';
 
-function createCacheBustedRequest(url) {
-  const request = new Request(url, { cache: 'reload' });
-  // See https://fetch.spec.whatwg.org/#concept-request-mode
-  // This is not yet supported in Chrome as of M48, so we need to explicitly
-  // check to see if the cache: 'reload' option had any effect.
-  if ('cache' in request) {
-    return request;
-  }
   self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(cacheName).then(function(cache) {
