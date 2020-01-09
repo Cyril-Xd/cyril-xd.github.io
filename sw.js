@@ -26,7 +26,7 @@ function createCacheBustedRequest(url) {
     caches.open(cacheName).then(function(cache) {
       return cache.addAll(
         [
-          '/icons/512..png',
+          '/icons/512.png',
           '/jspm_packages/system.js',
           '/jspm_packages/system.src.js',
           '/jspm_packages/npm/vba-next@1.0.0.js',
