@@ -11,7 +11,7 @@ const CACHE_VERSION = 2;
 const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
-const OFFLINE_URL = '/index.html';
+const OFFLINE_URL = './index.html';
 
 function createCacheBustedRequest(url) {
   const request = new Request(url, { cache: 'reload' });
@@ -26,6 +26,7 @@ function createCacheBustedRequest(url) {
     caches.open(cacheName).then(function(cache) {
       return cache.addAll(
         [
+          './',
           '/icons/512.png',
           '/jspm_packages/system.js',
           '/jspm_packages/system.src.js',
@@ -78,18 +79,7 @@ function createCacheBustedRequest(url) {
   return new Request(bustedUrl);
 }
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    // We can't use cache.add() here, since we want OFFLINE_URL to be the cache
-    // key, but the actual URL we end up requesting might include a
-    // cache-busting parameter.
-    fetch(createCacheBustedRequest(OFFLINE_URL)).then(response => {
-      return caches.open(CURRENT_CACHES.offline).then(cache => {
-        return cache.put(OFFLINE_URL, response);
-      });
-    }),
-  );
-});
+
 
 self.addEventListener('activate', event => {
   // Delete all caches that aren't named in CURRENT_CACHES.
