@@ -11,16 +11,9 @@ const CACHE_VERSION = 2;
 const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
-const OFFLINE_URL = './index.html';
+const OFFLINE_URL = '/index.html';
 
-function createCacheBustedRequest(url) {
-  const request = new Request(url, { cache: 'reload' });
-  // See https://fetch.spec.whatwg.org/#concept-request-mode
-  // This is not yet supported in Chrome as of M48, so we need to explicitly
-  // check to see if the cache: 'reload' option had any effect.
-  if ('cache' in request) {
-    return request;
-  }
+
   self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(cacheName).then(function(cache) {
@@ -79,18 +72,7 @@ function createCacheBustedRequest(url) {
   return new Request(bustedUrl);
 }
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    // We can't use cache.add() here, since we want OFFLINE_URL to be the cache
-    // key, but the actual URL we end up requesting might include a
-    // cache-busting parameter.
-    fetch(createCacheBustedRequest(OFFLINE_URL)).then(response => {
-      return caches.open(CURRENT_CACHES.offline).then(cache => {
-        return cache.put(OFFLINE_URL, response);
-      });
-    }),
-  );
-});
+
 
 self.addEventListener('activate', event => {
   // Delete all caches that aren't named in CURRENT_CACHES.
