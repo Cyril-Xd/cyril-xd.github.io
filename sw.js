@@ -11,7 +11,7 @@ const CACHE_VERSION = 2;
 const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
-const OFFLINE_URL = '/index.html';
+const OFFLINE_URL = '/index.css';
 
 
   self.addEventListener('install', function(event) {
