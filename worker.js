@@ -23,7 +23,7 @@ function createCacheBustedRequest(url) {
   }
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
+    caches.open('offline-v1').then(function(cache) {
       return cache.add('/index.css');
     })
   );
