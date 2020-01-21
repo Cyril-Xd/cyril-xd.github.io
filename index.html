@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="index.css">
-        <title>gametime-player</title>
+        <title>GPemu</title>
         <link rel="shortcut icon" type="image/png" href="icons/512.png">
         <link rel="manifest" href="/manifest.json">
     </head>
@@ -58,12 +58,5 @@
         <script src="config.js"></script>
         <script src="build.js"></script>
         <script>System.import('./index.coffee!')</script>
-        <script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log("Service Worker Registered"); });
-}
-</script>
     </body>
 </html>
