@@ -21,8 +21,12 @@ function createCacheBustedRequest(url) {
   if ('cache' in request) {
     return request;
   }
-  cache.add('/icons/512.png', '/build.js', '/index.css').then(function() {
-  // request has been added to the cache
+this.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open('v1').then(function(cache) {
+      return cache.add('/index.css');
+    })
+  );
 });
           
 
