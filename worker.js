@@ -7,7 +7,7 @@
 
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be cached again.
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 1;
 const CURRENT_CACHES = {
   offline: `offline-v${CACHE_VERSION}`,
 };
@@ -21,23 +21,11 @@ function createCacheBustedRequest(url) {
   if ('cache' in request) {
     return request;
   }
-  self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      return cache.addAll(
-        [
-          '/icons/512.png',
-          '/build.js',
-          '/config.js',
-          '/index.coffee',
-          '/index.css',
-          '/settings.json',
-          '/utils.js'
-        ]
-      );
-    })
-  );
+  cache.add('/icons/512.png', '/build.js', '/index.css').then(function() {
+  // request has been added to the cache
 });
+          
+
 
   // If {cache: 'reload'} didn't have any effect, append a cache-busting URL
   // parameter instead.
