@@ -23,7 +23,7 @@
       ]
     }
   },
-  "start_url": "/index.html?utm_source=pwa_install",
+  "start_url": "/index.html",
   "display": "standalone",
   "offline_enabled": true,
   "permissions": [
